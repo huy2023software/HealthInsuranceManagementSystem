@@ -1,0 +1,67 @@
+﻿@model HealthInsuranceManagementSystem.Models.InsuranceCompany
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+@try
+{
+    <h2 class="text-primary">Update information of company @Model.CompanyName</h2>
+    <form action="@Url.Action("Update", "InsuranceCompany", new {id = Model.CompanyId})" method="post">
+        <div class="form-group">
+            <label class="col-form-label-lg fw-bold fw-bold" for="CompanyId">Company Id</label>
+            <input type="text" readonly class="form-control" name="CompanyId" id="CompanyId" value="@Model.CompanyId" />
+        </div>
+
+        <div class="form-group">
+            <label class="col-form-label-lg fw-bold fw-bold" for="CompanyName">Company Name</label>
+            <input type="text" class="form-control" name="CompanyName" id="CompanyName" value="@Model.CompanyName" />
+            @Html.ValidationMessageFor(company => company.CompanyName)
+        </div>
+
+        <div class="form-group">
+            <label class="col-form-label-lg fw-bold fw-bold" for="Address">Address</label>
+            <textarea class="form-control" name="Address" id="Address">@Model.Address</textarea>
+            @Html.ValidationMessageFor(company => company.Address)
+        </div>
+
+        <div class="form-group">
+            <label class="col-form-label-lg fw-bold fw-bold" for="Phone">Phone</label>
+            <input type="tel" class="form-control" name="Phone" id="Phone" value="@Model.Phone" />
+            @Html.ValidationMessageFor(company => company.Phone)
+        </div>
+
+        <div class="form-group">
+            <label class="col-form-label-lg fw-bold fw-bold" for="CompanyWebsite">Company Website</label>
+            <input type="text" class="form-control" name="CompanyWebsite" id="CompanyWebsite" value="@Model.CompanyWebsite " />
+            @Html.ValidationMessageFor(company => company.CompanyWebsite)
+        </div>
+
+        <div class="form-group mt-2">
+            <button type="submit" class="px-3 py-2 btn btn-success">Update</button>
+            <a class="text-decoration-none px-3 py-2 btn btn-secondary" href="@Url.Action("Index", "InsuranceCompany")">Cancel</a>
+        </div>
+    </form>
+} catch(NullReferenceException ex)
+{
+<div class="container p-3">
+    <p class="text-danger lead fs-5 fw-bold">Entered invalid data, see belows warning:</p>
+    <ul class="w-50 list-unstyled">
+        <li>
+            <h6>@Html.ValidationMessageFor(company => company.CompanyName)</h6>
+        </li>
+        <li>
+            <small>@Html.ValidationMessageFor(company => company.Address)</small>
+        </li>
+        <li>
+            <small>@Html.ValidationMessageFor(company => company.Phone)</small>
+        </li> 
+        <li>
+            <small>@Html.ValidationMessageFor(company => company.CompanyWebsite)</small>
+        </li>
+    </ul>
+    <a class="text-decoration-none py-2 px-1 btn btn-danger"
+       href="@Url.Action("GoBack", "Common", new { returnUrl = Request.UrlReferrer })">
+        Return to the update page
+    </a>
+</div>
+}

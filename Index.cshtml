@@ -1,0 +1,111 @@
+﻿@model List<HealthInsuranceManagementSystem.Models.InsuranceCompany> 
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2 class="lead fw-bold fs-3 text-primary mb-5">List of Insurance Company affiliated with system</h2>
+<div class="d-flex justify-content-between">
+    <div>
+        <a class="text-decoration-none btn btn-primary" href="@Url.Action("Add", "InsuranceCompany")">
+            <i class="fa-solid fa-plus"></i> Add new Insurance Company
+        </a>
+    </div>
+    <div>
+        <form action="@Url.Action("Index", "InsuranceCompany")" method="post">
+            <div class="search-bar">
+                <input
+                       style="width: 400px;"
+                       placeholder="Enter the name to search"
+                       class="fst-italic bg-light form-control"
+                       type="search" name="search" id="search"
+                       value="@ViewBag.Search" />
+                <button type="submit" class="search-button border-0 bg-light-subtle">
+                    <i style="color: #666;" class="search-icon fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@{ 
+    string iconClass = "";
+    if (ViewBag.IconClass == "fa-solid fa-sort-down")
+    {
+        iconClass = "fa-solid fa-sort-up";
+    }
+    else
+    {
+        iconClass = "fa-solid fa-sort-down";
+    }
+}
+
+    <table class="table table-bordered table-responsive-sm table-group-divider table-success mt-3">
+        <thead>
+            <tr>
+                <th>
+                    <a href="@Url.Action("Index", "InsuranceCompany",
+                            new { SortColumn = "CompanyId", IconClass = iconClass })" class="text-decoration-none text-dark">
+                        Company Id @if (ViewBag.SortColumn == "CompanyId")
+                        {
+                            <i class="@ViewBag.IconClass"></i>
+                        }
+                    </a>
+                </th>
+                <th>
+                    <a href="@Url.Action("Index", "InsuranceCompany",
+                        new { SortColumn = "CompanyName", IconClass = iconClass })" class="text-decoration-none text-dark">
+                        Company Name @if (ViewBag.SortColumn == "CompanyName")
+                        {
+                            <i class="@ViewBag.IconClass"></i>
+                        }
+                    </a>
+                </th>
+                <th colspan=2>
+                    <a class="text-decoration-none text-dark" href="@Url.Action("Index", "InsuranceCompany",
+                            new { SortColumn = "Address", IconClass = iconClass })">
+                        Address
+                        @if (ViewBag.SortColumn == "Address")
+                        {
+                            <i class="@ViewBag.IconClass"></i>
+                        }
+                    </a>
+                </th>
+                <th>Phone</th>
+                <th>
+                    <a class="text-decoration-none text-dark" href="@Url.Action("Index", "InsuranceCompany",
+                        new { SortColumn = "CompanyWebsite", IconClass = iconClass })">
+                        Company Website @if (ViewBag.SortColumn == "CompanyWebsite")
+                        {
+                            <i class="@ViewBag.IconClass"></i>
+                        }
+                    </a>
+                </th>
+                <th>Details</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var company in Model)
+            {
+                <tr>
+                    <td>@company.CompanyId</td>
+                    <td>@company.CompanyName</td>
+                    <td colspan="2">@company.Address</td>
+                    <td>@company.Phone</td>
+                    <td>@company.CompanyWebsite</td>
+                    <td>
+                        <a href="@Url.Action("Details", "InsuranceCompany", new {id = company.CompanyId})" class="text-decoration-none">View Details</a>
+                    </td>
+                    <td align="center">
+                        <a href="@Url.Action("Update", "InsuranceCompany", new {id = company.CompanyId})"><i class="fa-solid fa-pen"></i></a>
+                    </td>
+                    <td align="center">
+                        <a href="@Url.Action("Delete", "InsuranceCompany", new {id = company.CompanyId})"><i class="fa-solid fa-trash"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

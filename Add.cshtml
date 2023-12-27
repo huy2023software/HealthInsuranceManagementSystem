@@ -1,0 +1,51 @@
+﻿@model HealthInsuranceManagementSystem.Models.InsuranceCompany
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<h2 class="text-primary">Add new Insurance Company</h2>
+
+<div class="row">
+    <form class="col col-md-6" action="@Url.Action("Add", "InsuranceCompany")" method="post">
+        <div class="form-group">
+            <label class="col-form-label-lg fw-bold fw-bold" for="CompanyName">Company Name</label>
+            <input class="form-control" type="text" name="CompanyName" id="CompanyName" />
+            <span class="text-danger fw-bold">
+                @Html.ValidationMessageFor(company => company.CompanyName)
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label class="col-form-label-lg fw-bold fw-bold" for="Address">Address</label>
+            <textarea class="form-control" name="Address" id="Address"></textarea>
+            <span class="text-danger fw-bold">
+                @Html.ValidationMessageFor(company => company.Address)
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label class="col-form-label-lg fw-bold fw-bold" for="Phone">Phone</label>
+            <input class="form-control" type="tel" name="Phone" id="Phone" />
+            <span class="text-danger fw-bold">
+                @Html.ValidationMessageFor(company => company.Phone)
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label class="col-form-label-lg fw-bold fw-bold" for="CompanyWebsite">Company Website</label>
+            <input class="form-control" type="url" name="CompanyWebsite" id="CompanyWebsite" />
+            <span class="text-danger fw-bold">
+                @Html.ValidationMessageFor(company => company.CompanyWebsite)
+            </span>
+        </div>
+
+        <div class="form-group mt-2">
+            <button type="submit" class="px-4 py-2 btn btn-primary">Add</button>
+            <a class="text-decoration-none px-3 py-2 btn btn-secondary" href="@Url.Action("Index", "InsuranceCompany")">Cancel</a>
+        </div>
+    </form>
+
+    <div class="col col-md-6">
+        <img class="img-fluid rounded-circle mb-5" src="~/Images/InsuranceCompany2.jpg" />
+    </div>
+</div>
