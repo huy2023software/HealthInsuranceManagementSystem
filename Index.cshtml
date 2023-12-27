@@ -1,20 +1,21 @@
-﻿@model List<HealthInsuranceManagementSystem.Models.InsuranceCompany> 
+﻿@model List<HealthInsuranceManagementSystem.Models.Employee>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<h2 class="lead fw-bold fs-3 text-primary mb-5">List of Insurance Company affiliated with system</h2>
+<h2 class="lead fs-3 fw-bold text-primary mb-5">List of Employee working</h2>
 <div class="d-flex justify-content-between">
-    <div>
-        <a class="text-decoration-none btn btn-primary" href="@Url.Action("Add", "InsuranceCompany")">
-            <i class="fa-solid fa-plus"></i> Add new Insurance Company
+    <div> 
+        <a class="text-decoration-none btn btn-primary" 
+           href="@Url.Action("Add", "Employee")">
+            <i class="fa-solid fa-plus"></i> Add new Employee
         </a>
     </div>
     <div>
-        <form action="@Url.Action("Index", "InsuranceCompany")" method="post">
+        <form action="@Url.Action("Index", "Employee")" method="post">
             <div class="search-bar">
-                <input
+                <input 
                        style="width: 400px;"
                        placeholder="Enter the name to search"
                        class="fst-italic bg-light form-control"
@@ -28,7 +29,7 @@
     </div>
 </div>
 
-@{ 
+@{
     string iconClass = "";
     if (ViewBag.IconClass == "fa-solid fa-sort-down")
     {
@@ -40,72 +41,140 @@
     }
 }
 
-    <table class="table table-bordered table-responsive-sm table-group-divider table-success mt-3">
-        <thead>
-            <tr>
-                <th>
-                    <a href="@Url.Action("Index", "InsuranceCompany",
-                            new { SortColumn = "CompanyId", IconClass = iconClass })" class="text-decoration-none text-dark">
-                        Company Id @if (ViewBag.SortColumn == "CompanyId")
-                        {
-                            <i class="@ViewBag.IconClass"></i>
-                        }
-                    </a>
-                </th>
-                <th>
-                    <a href="@Url.Action("Index", "InsuranceCompany",
-                        new { SortColumn = "CompanyName", IconClass = iconClass })" class="text-decoration-none text-dark">
-                        Company Name @if (ViewBag.SortColumn == "CompanyName")
-                        {
-                            <i class="@ViewBag.IconClass"></i>
-                        }
-                    </a>
-                </th>
-                <th colspan=2>
-                    <a class="text-decoration-none text-dark" href="@Url.Action("Index", "InsuranceCompany",
-                            new { SortColumn = "Address", IconClass = iconClass })">
-                        Address
-                        @if (ViewBag.SortColumn == "Address")
-                        {
-                            <i class="@ViewBag.IconClass"></i>
-                        }
-                    </a>
-                </th>
-                <th>Phone</th>
-                <th>
-                    <a class="text-decoration-none text-dark" href="@Url.Action("Index", "InsuranceCompany",
-                        new { SortColumn = "CompanyWebsite", IconClass = iconClass })">
-                        Company Website @if (ViewBag.SortColumn == "CompanyWebsite")
-                        {
-                            <i class="@ViewBag.IconClass"></i>
-                        }
-                    </a>
-                </th>
-                <th>Details</th>
-                <th>Update</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
+<table class="table table-bordered table-responsive-sm table-group-divider table-success mt-3">
+    <thead>
+        <tr>
+            <th>
+                <a href="@Url.Action("Index", "Employee",
+                            new { SortColumn = "EmpNo", IconClass = iconClass })" class="text-decoration-none text-dark">
+                    Employee No @if (ViewBag.SortColumn == "EmpNo")
+                    {
+                        <i class="@ViewBag.IconClass"></i>
+                    }
+                </a>
+            </th>
+            <th>
+                <a href="@Url.Action("Index", "Employee",
+                    new { SortColumn = "Designation", IconClass = iconClass })" class="text-decoration-none text-dark">
+                    Designation @if (ViewBag.SortColumn == "Designation")
+                    {
+                        <i class="@ViewBag.IconClass"></i>
+                    }
+                </a>
+            </th>
+            <th>
+                <a href="@Url.Action("Index", "Employee",
+    new { SortColumn = "JoinDate", IconClass = iconClass })" class="text-decoration-none text-dark">
+                    JoinDate @if (ViewBag.SortColumn == "JoinDate")
+                    {
+                        <i class="@ViewBag.IconClass"></i>
+                    }
+                </a>
+            </th>
+            <th>
+                <a href="@Url.Action("Index", "Employee",
+                        new { SortColumn = "Salary", IconClass = iconClass })" class="text-decoration-none text-dark">
+                    Salary @if (ViewBag.SortColumn == "Salary")
+                    {
+                        <i class="@ViewBag.IconClass"></i>
+                    }
+                </a>
+            </th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>
+                <a href="@Url.Action("Index", "Employee",
+                        new { SortColumn = "Address", IconClass = iconClass })" class="text-decoration-none text-dark">
+                    Address @if (ViewBag.SortColumn == "Address")
+                    {
+                        <i class="@ViewBag.IconClass"></i>
+                    }
+                </a>
+            </th>
+            <th>Contact No</th>
+            <th>
+                <a href="@Url.Action("Index", "Employee",
+                        new {SortColumn = "State", IconClass = iconClass })" class="text-decoration-none text-dark">
+                    State @if (ViewBag.SortColumn == "State")
+                    {
+                        <i class="@ViewBag.IconClass"></i>
+                    }
+                </a>
+            </th>
+            <th>
+                <a href="@Url.Action("Index", "Employee",
+        new {SortColumn = "Country", IconClass = iconClass })" class="text-decoration-none text-dark">
+                    Country @if (ViewBag.SortColumn == "Country")
+                    {
+                        <i class="@ViewBag.IconClass"></i>
+                    }
+                </a>
+            </th>
+            <th>
+                <a href="@Url.Action("Index", "Employee",
+        new {SortColumn = "City", IconClass = iconClass })" class="text-decoration-none text-dark">
+                    City @if (ViewBag.SortColumn == "City")
+                    {
+                        <i class="@ViewBag.IconClass"></i>
+                    }
+                </a>
+            </th>
+            <th>
+                <a href="@Url.Action("Index", "Employee",
+                        new { SortColumn = "PolicyId", IconClass = iconClass })" class="text-decoration-none text-dark">
+                    Policy Id @if (ViewBag.SortColumn == "PolicyId")
+                    {
+                        <i class="@ViewBag.IconClass"></i>
+                    }
+                </a>
+            </th>
+            <th>
+                <a href="@Url.Action("Index", "Employee",
+        new { SortColumn = "PolicyStatus", IconClass = iconClass })" class="text-decoration-none text-dark">
+                    Policy Status @if (ViewBag.SortColumn == "PolicyStatus")
+                    {
+                        <i class="@ViewBag.IconClass"></i>
+                    }
+                </a>
+            </th>
+            <th>Details</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
 
-        <tbody>
-            @foreach (var company in Model)
-            {
-                <tr>
-                    <td>@company.CompanyId</td>
-                    <td>@company.CompanyName</td>
-                    <td colspan="2">@company.Address</td>
-                    <td>@company.Phone</td>
-                    <td>@company.CompanyWebsite</td>
-                    <td>
-                        <a href="@Url.Action("Details", "InsuranceCompany", new {id = company.CompanyId})" class="text-decoration-none">View Details</a>
-                    </td>
-                    <td align="center">
-                        <a href="@Url.Action("Update", "InsuranceCompany", new {id = company.CompanyId})"><i class="fa-solid fa-pen"></i></a>
-                    </td>
-                    <td align="center">
-                        <a href="@Url.Action("Delete", "InsuranceCompany", new {id = company.CompanyId})"><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <tbody>
+        @foreach (var employee in Model)
+        {
+            <tr>
+                <td>@employee.EmpNo</td>
+                <td>@employee.Designation</td>
+                <td>@employee.JoinDate.ToShortDateString()</td>
+                <td>@employee.Salary</td>
+                <td>@employee.FirstName</td>
+                <td>@employee.LastName</td>
+                <td>@employee.Username</td>
+                <td>@employee.Password</td>
+                <td>@employee.Address</td>
+                <td>@employee.ContactNo</td>
+                <td>@employee.State</td>
+                <td>@employee.Country</td>
+                <td>@employee.City</td>
+                <td>@employee.PolicyId</td>
+                <td>@employee.PolicyStatus</td>
+                <td align="center">
+                    <a class="text-decoration-none"
+                       href="@Url.Action("Details", "Employee", new { empNo = employee.EmpNo })">View Details</a>
+                </td>
+                <td align="center">
+                    <a href="@Url.Action("Update", "Employee", new { empNo = employee.EmpNo })"><i class="fa-solid fa-pen"></i></a>
+                </td>
+                <td align="center">
+                    <a href="@Url.Action("Delete", "Employee", new { empNo = employee.EmpNo })"><i class="fa-solid fa-trash"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,46 @@
+﻿@model HealthInsuranceManagementSystem.Models.Employee
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2 class="text-primary">Delete Employee @Model.FirstName</h2>
+<form action="@Url.Action("Delete", "Employee", new { empNo = Model.EmpNo })" method="post">
+    <table class="table table-responsive-lg table-primary">
+        <thead>
+            <tr>
+                <td>Designation</td>
+                <td>@Model.Designation</td>
+            </tr>
+
+            <tr>
+                <td>Join Date</td>
+                <td>@Model.JoinDate.ToShortDateString()</td>
+            </tr>
+
+            <tr>
+                <td>Salary</td>
+                <td>@Model.Salary</td>
+            </tr>
+
+            <tr>
+                <td>Name</td>
+                <td>@Model.FirstName @Model.LastName</td>
+            </tr>
+
+            <tr>
+                <td>Address</td>
+                <td>@Model.Address</td>
+            </tr>
+
+            <tr>
+                <td>Contact No</td>
+                <td>@Model.ContactNo</td>
+            </tr>
+        </thead>
+    </table>
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a class="btn btn-secondary text-decoration-none" href="@Url.Action("Index", "Employee")">
+        Cancel
+    </a>
+</form>

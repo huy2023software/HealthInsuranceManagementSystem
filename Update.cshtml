@@ -1,62 +1,205 @@
-﻿@model HealthInsuranceManagementSystem.Models.InsuranceCompany
+﻿@model HealthInsuranceManagementSystem.Models.Employee
 @{
     ViewBag.Title = "Update";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
+
 @try
 {
-    <h2 class="text-primary">Update information of company @Model.CompanyName</h2>
-    <form action="@Url.Action("Update", "InsuranceCompany", new {id = Model.CompanyId})" method="post">
-        <div class="form-group">
-            <label class="col-form-label-lg fw-bold fw-bold" for="CompanyId">Company Id</label>
-            <input type="text" readonly class="form-control" name="CompanyId" id="CompanyId" value="@Model.CompanyId" />
+    <h2 class="text-primary fs-3 fw-bold">Update information of employee @Model.FirstName</h2>
+
+    <form class="mt-3 row" action="@Url.Action("Update", "Employee", 
+                                  new { empNo =  Model.EmpNo })" method="post">
+        <div class="col col-md-6">
+            <div class="form-group mt-2">
+                <label class="col-form-label-lg fw-bold" for="EmpNo">Emp No</label>
+                <input readonly class="form-control bg-light" type="text" name="EmpNo" id="EmpNo"
+                       value="@Model.EmpNo" />
+            </div>
+            <div class="form-group mt-2">
+                <label class="col-form-label-lg fw-bold" for="Designation">Designation</label>
+                <input class="form-control" type="text" name="Designation" id="Designation"
+                       value="@Model.Designation" />
+                <span class="text-danger">
+                    @Html.ValidationMessageFor(emp => emp.Designation)
+                </span>
+            </div>
+            <div class="form-group mt-2">
+                <label class="col-form-label-lg fw-bold" for="">Join Date</label>
+                <input class="form-control" type="date" name="JoinDate" id="JoinDate"
+                       value="@Model.JoinDate.ToString("yyyy-MM-dd")" />
+                <span class="text-danger">
+                    @Html.ValidationMessageFor(emp => emp.JoinDate)
+                </span>
+            </div>
+            <div class="form-group mt-2">
+                <label class="col-form-label-lg fw-bold" for="Salary">Salary</label>
+                <input class="form-control" type="number" name="Salary" id="Salary"
+                       value="@Model.Salary" />
+                <span class="text-danger">
+                    @Html.ValidationMessageFor(emp => emp.Salary)
+                </span>
+            </div>
+            <div class="form-group mt-2">
+                <label class="col-form-label-lg fw-bold" for="FirstName">First name</label>
+                <input class="form-control" type="text" name="FirstName" id="FirstName"
+                       value="@Model.FirstName" />
+                <span class="text-danger">
+                    @Html.ValidationMessageFor(emp => emp.FirstName)
+                </span>
+            </div>
+            <div class="form-group mt-2">
+                <label class="col-form-label-lg fw-bold" for="LastName">Last name</label>
+                <input class="form-control" type="text" name="LastName" id="LastName"
+                       value="@Model.LastName" />
+                <span class="text-danger">
+                    @Html.ValidationMessageFor(emp => emp.LastName)
+                </span>
+            </div>
+
+            <div class="form-group mt-2">
+                <label class="col-form-label-lg fw-bold" for="Username">Username</label>
+                <input class="form-control" type="text" name="Username" id="Username"
+                       value="@Model.Username" />
+                <span class="text-danger">
+                    @Html.ValidationMessageFor(emp => emp.Username)
+                </span>
+            </div>
+
+            <div class="form-group mt-2">
+                <label class="col-form-label-lg fw-bold" for="Password">Password</label>
+                <input class="form-control" type="text" name="Password" id="Password"
+                       value="@Model.Password" />
+                <span class="text-danger">
+                    @Html.ValidationMessageFor(emp => emp.Password)
+                </span>
+            </div>
         </div>
 
-        <div class="form-group">
-            <label class="col-form-label-lg fw-bold fw-bold" for="CompanyName">Company Name</label>
-            <input type="text" class="form-control" name="CompanyName" id="CompanyName" value="@Model.CompanyName" />
-            @Html.ValidationMessageFor(company => company.CompanyName)
-        </div>
+        <div class="col col-md-6">
+            <div class="form-group mt-2">
+                <label class="col-form-label-lg fw-bold" for="Address">Address</label>
+                <textarea class="form-control" name="Address" id="Address">@Model.Address</textarea>
+                <span class="text-danger">
+                    @Html.ValidationMessageFor(emp => emp.Address)
+                </span>
+            </div>
 
-        <div class="form-group">
-            <label class="col-form-label-lg fw-bold fw-bold" for="Address">Address</label>
-            <textarea class="form-control" name="Address" id="Address">@Model.Address</textarea>
-            @Html.ValidationMessageFor(company => company.Address)
-        </div>
+            <div class="form-group mt-2">
+                <label class="col-form-label-lg fw-bold" for="ContactNo">Contact No</label>
+                <input type="tel" name="ContactNo" id="ContactNo" class="form-control" 
+                       value="@Model.ContactNo" />
+                <span class="text-danger">
+                    @Html.ValidationMessageFor(emp => emp.ContactNo)
+                </span>
+            </div>
 
-        <div class="form-group">
-            <label class="col-form-label-lg fw-bold fw-bold" for="Phone">Phone</label>
-            <input type="tel" class="form-control" name="Phone" id="Phone" value="@Model.Phone" />
-            @Html.ValidationMessageFor(company => company.Phone)
-        </div>
+            <div class="form-group mt-2">
+                <label class="col-form-label-lg fw-bold" for="State">State</label>
+                <input type="text" name="State" id="State" class="form-control"
+                       value="@Model.State"/>
+                <span class="text-danger">
+                    @Html.ValidationMessageFor(emp => emp.State)
+                </span>
+            </div>
 
-        <div class="form-group">
-            <label class="col-form-label-lg fw-bold fw-bold" for="CompanyWebsite">Company Website</label>
-            <input type="text" class="form-control" name="CompanyWebsite" id="CompanyWebsite" value="@Model.CompanyWebsite " />
-            @Html.ValidationMessageFor(company => company.CompanyWebsite)
+            <div class="form-group mt-2">
+                <label class="col-form-label-lg fw-bold" for="Country">Country</label>
+                <input type="text" name="Country" id="Country" class="form-control"
+                       value="@Model.Country"/>
+                <span class="text-danger">
+                    @Html.ValidationMessageFor(emp => emp.Country)
+                </span>
+            </div>
+
+            <div class="form-group mt-2">
+                <label class="col-form-label-lg fw-bold" for="City">City</label>
+                <input type="text" name="City" id="City" class="form-control"
+                       value="@Model.City"/>
+                <span class="text-danger">
+                    @Html.ValidationMessageFor(emp => emp.City)
+                </span>
+            </div>
+
+            <div class="form-group mt-2">
+                <label class="col-form-label-lg fw-bold" for="PolicyId">Policy Id</label>
+                <select name="PolicyId" id="PolicyId">
+                    @foreach (var policy in ViewBag.Policies)
+                    {
+                        <option value="@policy.PolicyId">@policy.PolicyName</option>
+                    }
+                </select>
+                <span class="text-danger">
+                    @Html.ValidationMessageFor(emp => emp.PolicyId)
+                </span>
+            </div>
+
+            <div class="form-group mt-2">
+                <label class="col-form-label-lg fw-bold" for="PolicyStatus">Policy Status</label>
+                <select name="PolicyStatus" id="PolicyStatus">
+                    <option value="Active">Active</option>
+                    <option value="Cancel">Cancel</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Expired">Expired</option>
+                </select>
+                <span class="text-danger">
+                    @Html.ValidationMessageFor(emp => emp.PolicyStatus)
+                </span>
+            </div>
         </div>
 
         <div class="form-group mt-2">
-            <button type="submit" class="px-3 py-2 btn btn-success">Update</button>
-            <a class="text-decoration-none px-3 py-2 btn btn-secondary" href="@Url.Action("Index", "InsuranceCompany")">Cancel</a>
+            <button type="submit" class="btn btn-success px-3 py-2">Update</button>
+            <a class="btn btn-secondary px-3 py-2" href="@Url.Action("Index", "Employee")">Cancel</a>
         </div>
     </form>
-} catch(NullReferenceException ex)
+} 
+catch (NullReferenceException ex)
 {
 <div class="container p-3">
     <p class="text-danger lead fs-5 fw-bold">Entered invalid data, see belows warning:</p>
     <ul class="w-50 list-unstyled">
         <li>
-            <h6>@Html.ValidationMessageFor(company => company.CompanyName)</h6>
+            <small>@Html.ValidationMessageFor(emp => emp.Designation)</small>
         </li>
         <li>
-            <small>@Html.ValidationMessageFor(company => company.Address)</small>
+            <small>@Html.ValidationMessageFor(emp => emp.JoinDate)</small>
         </li>
         <li>
-            <small>@Html.ValidationMessageFor(company => company.Phone)</small>
-        </li> 
+            <small>@Html.ValidationMessageFor(emp => emp.Salary)</small>
+        </li>
         <li>
-            <small>@Html.ValidationMessageFor(company => company.CompanyWebsite)</small>
+            <small>@Html.ValidationMessageFor(emp => emp.FirstName)</small>
+        </li>
+        <li>
+            <small>@Html.ValidationMessageFor(emp => emp.LastName)</small>
+        </li>
+        <li>
+            <small>@Html.ValidationMessageFor(emp => emp.Username)</small>
+        </li>
+        <li>
+            <small>@Html.ValidationMessageFor(emp => emp.Password)</small>
+        </li>
+        <li>
+            <small>@Html.ValidationMessageFor(emp => emp.Address)</small>
+        </li>
+        <li>
+            <small>@Html.ValidationMessageFor(emp => emp.ContactNo)</small>
+        </li>
+        <li>
+            <small>@Html.ValidationMessageFor(emp => emp.State)</small>
+        </li>
+        <li>
+            <small>@Html.ValidationMessageFor(emp => emp.Country)</small>
+        </li>
+        <li>
+            <small>@Html.ValidationMessageFor(emp => emp.City)</small>
+        </li>
+        <li>
+            <small>@Html.ValidationMessageFor(emp => emp.PolicyId)</small>
+        </li>
+        <li>
+            <small>@Html.ValidationMessageFor(emp => emp.PolicyStatus)</small>
         </li>
     </ul>
     <a class="text-decoration-none py-2 px-1 btn btn-danger"

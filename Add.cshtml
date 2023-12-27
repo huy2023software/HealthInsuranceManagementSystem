@@ -1,51 +1,151 @@
-﻿@model HealthInsuranceManagementSystem.Models.InsuranceCompany
+﻿@model HealthInsuranceManagementSystem.Models.Employee
 @{
     ViewBag.Title = "Add";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
-<h2 class="text-primary">Add new Insurance Company</h2>
 
-<div class="row">
-    <form class="col col-md-6" action="@Url.Action("Add", "InsuranceCompany")" method="post">
-        <div class="form-group">
-            <label class="col-form-label-lg fw-bold fw-bold" for="CompanyName">Company Name</label>
-            <input class="form-control" type="text" name="CompanyName" id="CompanyName" />
-            <span class="text-danger fw-bold">
-                @Html.ValidationMessageFor(company => company.CompanyName)
-            </span>
-        </div>
+<h2 class="text-primary fs-3 fw-bold">Add new Employee</h2>
 
-        <div class="form-group">
-            <label class="col-form-label-lg fw-bold fw-bold" for="Address">Address</label>
-            <textarea class="form-control" name="Address" id="Address"></textarea>
+<form action="@Url.Action("Add", "Employee")" method="post"
+      class="row mt-3">
+    <div class="col col-md-6">
+        <div class="form-group mt-2">
+            <label class="col-form-label-lg fw-bold" for="Designation">Designation</label>
+            <input class="form-control" type="text"
+                   name="Designation" id="Designation" />
             <span class="text-danger fw-bold">
-                @Html.ValidationMessageFor(company => company.Address)
-            </span>
-        </div>
-
-        <div class="form-group">
-            <label class="col-form-label-lg fw-bold fw-bold" for="Phone">Phone</label>
-            <input class="form-control" type="tel" name="Phone" id="Phone" />
-            <span class="text-danger fw-bold">
-                @Html.ValidationMessageFor(company => company.Phone)
-            </span>
-        </div>
-
-        <div class="form-group">
-            <label class="col-form-label-lg fw-bold fw-bold" for="CompanyWebsite">Company Website</label>
-            <input class="form-control" type="url" name="CompanyWebsite" id="CompanyWebsite" />
-            <span class="text-danger fw-bold">
-                @Html.ValidationMessageFor(company => company.CompanyWebsite)
+                @Html.ValidationMessageFor(emp => emp.Designation)
             </span>
         </div>
 
         <div class="form-group mt-2">
-            <button type="submit" class="px-4 py-2 btn btn-primary">Add</button>
-            <a class="text-decoration-none px-3 py-2 btn btn-secondary" href="@Url.Action("Index", "InsuranceCompany")">Cancel</a>
+            <label class="col-form-label-lg fw-bold" for="JoinDate">Join Date</label>
+            <input class="form-control" type="date" name="JoinDate" id="JoinDate" />
+            <span class="text-danger fw-bold">
+                @Html.ValidationMessageFor(emp => emp.JoinDate)
+            </span>
         </div>
-    </form>
+
+        <div class="form-group mt-2">
+            <label class="col-form-label-lg fw-bold" for="Salary">Salary</label>
+            <input class="form-control" type="number"
+                   name="Salary" id="Salary" />
+            <span class="text-danger fw-bold">
+                @Html.ValidationMessageFor(emp => emp.Salary)
+            </span>
+        </div>
+
+        <div class="form-group mt-2">
+            <label class="col-form-label-lg fw-bold" for="FirstName">First Name</label>
+            <input class="form-control" type="text"
+                   name="FirstName" id="FirstName" />
+            <span class="text-danger fw-bold">
+                @Html.ValidationMessageFor(emp => emp.FirstName)
+            </span>
+        </div>
+
+        <div class="form-group mt-2">
+            <label class="col-form-label-lg fw-bold" for="LastName">Last Name</label>
+            <input class="form-control" type="text"
+                   name="LastName" id="LastName" />
+            <span class="text-danger fw-bold">
+                @Html.ValidationMessageFor(emp => emp.LastName)
+            </span>
+        </div>
+
+        <div class="form-group mt-2">
+            <label class="col-form-label-lg fw-bold" for="Username">Username</label>
+            <input class="form-control" type="text"
+                   name="Username" id="Username" />
+            <span class="text-danger fw-bold">
+                @Html.ValidationMessageFor(emp => emp.Username)
+            </span>
+        </div>
+
+        <div class="form-group mt-2">
+            <label class="col-form-label-lg fw-bold" for="Password">Password</label>
+            <input class="form-control" type="password"
+                   name="Password" id="Password" />
+            <span class="text-danger fw-bold">
+                @Html.ValidationMessageFor(emp => emp.Password)
+            </span>
+        </div>
+    </div>
 
     <div class="col col-md-6">
-        <img class="img-fluid rounded-circle mb-5" src="~/Images/InsuranceCompany2.jpg" />
+        <div class="form-group mt-2">
+            <label class="col-form-label-lg fw-bold" for="Address">Address</label>
+            <textarea name="Address" id="Address" class="form-control"></textarea>
+            <span class="text-danger fw-bold">
+                @Html.ValidationMessageFor(emp => emp.Address)
+            </span>
+        </div>
+
+        <div class="form-group mt-2">
+            <label class="col-form-label-lg fw-bold" for="ContactNo">Contact No</label>
+            <input class="form-control" type="tel"
+                   name="ContactNo" id="ContactNo" />
+            <span class="text-danger fw-bold">
+                @Html.ValidationMessageFor(emp => emp.ContactNo)
+            </span>
+        </div>
+
+        <div class="form-group mt-2">
+            <label class="col-form-label-lg fw-bold" for="State">State</label>
+            <input class="form-control" type="text"
+                   name="State" id="State" />
+            <span class="text-danger fw-bold">
+                @Html.ValidationMessageFor(emp => emp.State)
+            </span>
+        </div>
+
+        <div class="form-group mt-2">
+            <label class="col-form-label-lg fw-bold" for="Country">Country</label>
+            <input class="form-control" type="text"
+                   name="Country" id="Country" />
+            <span class="text-danger fw-bold">
+                @Html.ValidationMessageFor(emp => emp.Country)
+            </span>
+        </div>
+
+        <div class="form-group mt-2">
+            <label class="col-form-label-lg fw-bold" for="City">City</label>
+            <input class="form-control" type="text"
+                   name="City" id="City" />
+            <span class="text-danger fw-bold">
+                @Html.ValidationMessageFor(emp => emp.City)
+            </span>
+        </div>
+
+        <div class="form-group mt-2">
+            <label class="col-form-label-lg fw-bold" for="PolicyId">Policy Id</label>
+            <select class="form-select" name="PolicyId" id="PolicyId">
+                @foreach (var policy in ViewBag.Policies)
+                {
+                    <option value="@policy.PolicyId">@policy.PolicyName</option>
+                }
+            </select>
+            <span class="text-danger fw-bold">
+                @Html.ValidationMessageFor(emp => emp.PolicyId)
+            </span>
+        </div>
+
+        <div class="form-group mt-2">
+            <label class="col-form-label-lg fw-bold" for="PolicyStatus">Policy Status</label>
+            <select class="form-select" name="PolicyStatus" id="PolicyStatus">
+                <option class="form-control" value="Active">Active</option>
+                <option class="form-control" value="Cancel">Cancel</option>
+                <option class="form-control" value="Pending">Pending</option>
+                <option class="form-control" value="Expired">Expired</option>
+            </select>
+            <span class="text-danger fw-bold">
+                @Html.ValidationMessageFor(emp => emp.PolicyStatus)
+            </span>
+        </div>
     </div>
-</div>
+    <div class="form-group mt-2">
+        <button type="submit" class="btn btn-primary px-3 py-2">Add</button>
+        <a href="@Url.Action("Index", "Employee")"
+           class="btn btn-secondary px-3 py-2">Cancel</a>
+    </div>
+</form>
