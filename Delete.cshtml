@@ -1,46 +1,46 @@
-﻿@model HealthInsuranceManagementSystem.Models.Employee
+﻿@model HealthInsuranceManagementSystem.Models.Policy
 @{
     ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<h2 class="text-primary">Delete Employee @Model.FirstName</h2>
-<form action="@Url.Action("Delete", "Employee", new { empNo = Model.EmpNo })" method="post">
+<h2 class="text-primary">Delete Policy @Model.PolicyName</h2>
+<form action="@Url.Action("Delete", "Policy", new { id = Model.PolicyId })" method="post">
     <table class="table table-responsive-lg table-primary">
         <thead>
             <tr>
-                <td>Designation</td>
-                <td>@Model.Designation</td>
+                <td>Policy Name</td>
+                <td>@Model.PolicyName</td>
             </tr>
 
             <tr>
-                <td>Join Date</td>
-                <td>@Model.JoinDate.ToShortDateString()</td>
+                <td>Description</td>
+                <td>@Model.Description</td>
             </tr>
 
             <tr>
-                <td>Salary</td>
-                <td>@Model.Salary</td>
+                <td>Amount</td>
+                <td>@Model.Amount $</td>
             </tr>
 
             <tr>
-                <td>Name</td>
-                <td>@Model.FirstName @Model.LastName</td>
+                <td>EMI</td>
+                <td>@Model.EMI $</td>
             </tr>
 
             <tr>
-                <td>Address</td>
-                <td>@Model.Address</td>
+                <td>Company Id</td>
+                <td>@Model.CompanyId</td>
             </tr>
 
             <tr>
-                <td>Contact No</td>
-                <td>@Model.ContactNo</td>
+                <td>Medical Id</td>
+                <td>@Model.MedicalId</td>
             </tr>
         </thead>
     </table>
     <button type="submit" class="btn btn-danger">Delete</button>
-    <a class="btn btn-secondary text-decoration-none" href="@Url.Action("Index", "Employee")">
+    <a class="btn btn-secondary text-decoration-none" href="@Url.Action("Index", "Policy")">
         Cancel
     </a>
 </form>

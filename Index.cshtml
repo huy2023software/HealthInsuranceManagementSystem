@@ -1,32 +1,29 @@
-﻿@model List<HealthInsuranceManagementSystem.Models.Employee>
+﻿@model List<HealthInsuranceManagementSystem.Models.Policy>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<h2 class="lead fs-3 fw-bold text-primary mb-5">List of Employee working</h2>
+<h2 class="lead text-primary fw-bold fs-3 mb-5">List of Policies offered by Insurance Companies</h2>
 <div class="d-flex justify-content-between">
-    <div> 
-        <a class="text-decoration-none btn btn-primary" 
-           href="@Url.Action("Add", "Employee")">
-            <i class="fa-solid fa-plus"></i> Add new Employee
+    <div>
+        <a href="@Url.Action("Add", "Policy")" class="text-decoration-none btn btn-primary">
+            <i class="fa-solid fa-plus"></i> Add new Policy
         </a>
     </div>
-    <div>
-        <form action="@Url.Action("Index", "Employee")" method="post">
-            <div class="search-bar">
-                <input 
-                       style="width: 400px;"
-                       placeholder="Enter the name to search"
-                       class="fst-italic bg-light form-control"
-                       type="search" name="search" id="search"
-                       value="@ViewBag.Search" />
-                <button type="submit" class="search-button border-0 bg-light-subtle">
-                    <i style="color: #666;" class="search-icon fa-solid fa-magnifying-glass"></i>
-                </button>
-            </div>
-        </form>
-    </div>
+    <form action="@Url.Action("Index", "Policy")" method="post">
+        <div class="search-bar">
+            <input 
+                   style="width: 400px" 
+                   type="search"
+                   class="form-control bg-light rounded fst-italic"
+                   placeholder="Enter the name to search" name="search" id="search" class="form-control bg-light"
+                   value="@ViewBag.Search" />
+            <button class="search-button bg-light-subtle border-0" type="submit">
+                <i class="search-icon fa-solid fa-magnifying-glass"></i>
+            </button>
+        </div>
+    </form>
 </div>
 
 @{
@@ -41,89 +38,12 @@
     }
 }
 
-<table class="table table-bordered table-responsive-sm table-group-divider table-success mt-3">
+<table class="table table-bordered table-responsive-md mt-3 table-primary">
     <thead>
         <tr>
             <th>
-                <a href="@Url.Action("Index", "Employee",
-                            new { SortColumn = "EmpNo", IconClass = iconClass })" class="text-decoration-none text-dark">
-                    Employee No @if (ViewBag.SortColumn == "EmpNo")
-                    {
-                        <i class="@ViewBag.IconClass"></i>
-                    }
-                </a>
-            </th>
-            <th>
-                <a href="@Url.Action("Index", "Employee",
-                    new { SortColumn = "Designation", IconClass = iconClass })" class="text-decoration-none text-dark">
-                    Designation @if (ViewBag.SortColumn == "Designation")
-                    {
-                        <i class="@ViewBag.IconClass"></i>
-                    }
-                </a>
-            </th>
-            <th>
-                <a href="@Url.Action("Index", "Employee",
-    new { SortColumn = "JoinDate", IconClass = iconClass })" class="text-decoration-none text-dark">
-                    JoinDate @if (ViewBag.SortColumn == "JoinDate")
-                    {
-                        <i class="@ViewBag.IconClass"></i>
-                    }
-                </a>
-            </th>
-            <th>
-                <a href="@Url.Action("Index", "Employee",
-                        new { SortColumn = "Salary", IconClass = iconClass })" class="text-decoration-none text-dark">
-                    Salary @if (ViewBag.SortColumn == "Salary")
-                    {
-                        <i class="@ViewBag.IconClass"></i>
-                    }
-                </a>
-            </th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
-            <th>Password</th>
-            <th>
-                <a href="@Url.Action("Index", "Employee",
-                        new { SortColumn = "Address", IconClass = iconClass })" class="text-decoration-none text-dark">
-                    Address @if (ViewBag.SortColumn == "Address")
-                    {
-                        <i class="@ViewBag.IconClass"></i>
-                    }
-                </a>
-            </th>
-            <th>Contact No</th>
-            <th>
-                <a href="@Url.Action("Index", "Employee",
-                        new {SortColumn = "State", IconClass = iconClass })" class="text-decoration-none text-dark">
-                    State @if (ViewBag.SortColumn == "State")
-                    {
-                        <i class="@ViewBag.IconClass"></i>
-                    }
-                </a>
-            </th>
-            <th>
-                <a href="@Url.Action("Index", "Employee",
-        new {SortColumn = "Country", IconClass = iconClass })" class="text-decoration-none text-dark">
-                    Country @if (ViewBag.SortColumn == "Country")
-                    {
-                        <i class="@ViewBag.IconClass"></i>
-                    }
-                </a>
-            </th>
-            <th>
-                <a href="@Url.Action("Index", "Employee",
-        new {SortColumn = "City", IconClass = iconClass })" class="text-decoration-none text-dark">
-                    City @if (ViewBag.SortColumn == "City")
-                    {
-                        <i class="@ViewBag.IconClass"></i>
-                    }
-                </a>
-            </th>
-            <th>
-                <a href="@Url.Action("Index", "Employee",
-                        new { SortColumn = "PolicyId", IconClass = iconClass })" class="text-decoration-none text-dark">
+                <a class="text-decoration-none text-dark" 
+                   href="@Url.Action("Index", "Policy", new { SortColumn = "PolicyId", IconClass = iconClass })">
                     Policy Id @if (ViewBag.SortColumn == "PolicyId")
                     {
                         <i class="@ViewBag.IconClass"></i>
@@ -131,9 +51,47 @@
                 </a>
             </th>
             <th>
-                <a href="@Url.Action("Index", "Employee",
-        new { SortColumn = "PolicyStatus", IconClass = iconClass })" class="text-decoration-none text-dark">
-                    Policy Status @if (ViewBag.SortColumn == "PolicyStatus")
+                <a class="text-decoration-none text-dark"
+                   href="@Url.Action("Index", "Policy", new { SortColumn = "PolicyName", IconClass = @iconClass })">
+                    Policy Name @if (ViewBag.SortColumn == "PolicyName")
+                    {
+                        <i class="@ViewBag.IconClass"></i>
+                    }
+                </a>
+            </th>
+
+            <th colspan="2">Policy Description</th>
+
+            <th>
+                <a class="text-decoration-none text-dark" href="@Url.Action("Index", "Policy", new { SortColumn = "Amount", IconClass = iconClass })">
+                    Amount @if (ViewBag.SortColumn == "Amount")
+                    {
+                        <i class="@ViewBag.IconClass"></i>
+                    }
+                </a>
+            </th>
+
+            <th>
+                <a class="text-decoration-none text-dark" href="@Url.Action("Index", "Policy", new { SortColumn = "EMI", IconClass = @iconClass })">
+                    EMI @if (ViewBag.SortColumn == "EMI")
+                    {
+                        <i class="@ViewBag.IconClass"></i>
+                    }
+                </a>
+            </th>
+
+            <th>
+                <a class="text-decoration-none text-dark" href="@Url.Action("Index", "Policy", new { SortColumn = "CompanyId", IconClass = @iconClass })">
+                    Company Id @if (ViewBag.SortColumn == "CompanyId")
+                    {
+                        <i class="@ViewBag.IconClass"></i>
+                    }
+                </a>
+            </th>
+
+            <th>
+                <a class="text-decoration-none text-dark" href="@Url.Action("Index", "Policy", new { SortColumn = "MedicalId", IconClass = @iconClass })">
+                    Medical Id @if (ViewBag.SortColumn == "MedicalId")
                     {
                         <i class="@ViewBag.IconClass"></i>
                     }
@@ -146,33 +104,35 @@
     </thead>
 
     <tbody>
-        @foreach (var employee in Model)
+        @foreach (var policy in Model)
         {
             <tr>
-                <td>@employee.EmpNo</td>
-                <td>@employee.Designation</td>
-                <td>@employee.JoinDate.ToShortDateString()</td>
-                <td>@employee.Salary</td>
-                <td>@employee.FirstName</td>
-                <td>@employee.LastName</td>
-                <td>@employee.Username</td>
-                <td>@employee.Password</td>
-                <td>@employee.Address</td>
-                <td>@employee.ContactNo</td>
-                <td>@employee.State</td>
-                <td>@employee.Country</td>
-                <td>@employee.City</td>
-                <td>@employee.PolicyId</td>
-                <td>@employee.PolicyStatus</td>
+                <td>@policy.PolicyId</td>
+                <td>@policy.PolicyName</td>
+                <td colspan="2">@policy.Description</td>
+                <td>@policy.Amount $</td>
+                <td>@policy.EMI $</td>
+                <td>@policy.CompanyId</td>
+                <td>@policy.MedicalId</td>
+                <td>
+                    <a class="text-decoration-none" href="@Url.Action("Details", "Policy"
+                                                         , new { id = policy.PolicyId })">View Details</a>
+                </td>
+
                 <td align="center">
+                    <a class="text-decoration-none" 
+                       href="@Url.Action("Update", "Policy"
+                                         , new { id = policy.PolicyId })">
+                        <i class="fa-solid fa-pen"></i>
+                    </a>
+                </td>
+
+                <td>
                     <a class="text-decoration-none"
-                       href="@Url.Action("Details", "Employee", new { empNo = employee.EmpNo })">View Details</a>
-                </td>
-                <td align="center">
-                    <a href="@Url.Action("Update", "Employee", new { empNo = employee.EmpNo })"><i class="fa-solid fa-pen"></i></a>
-                </td>
-                <td align="center">
-                    <a href="@Url.Action("Delete", "Employee", new { empNo = employee.EmpNo })"><i class="fa-solid fa-trash"></i></a>
+                       href="@Url.Action("Delete", "Policy"
+                                         , new { id = policy.PolicyId })">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
                 </td>
             </tr>
         }
